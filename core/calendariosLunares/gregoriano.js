@@ -1,4 +1,4 @@
-export function obterDomingoDePascoa(ano) {
+export default function obterDomingoDePascoa(ano) {
   let a = ano % 19;
   let b = Math.floor(parseFloat(ano) / 100);
   let c = ano % 100;
@@ -15,9 +15,14 @@ export function obterDomingoDePascoa(ano) {
   let mes = Number(Math.floor((h + l - 7 * m + 114) / 31));
   let dia = Number((h + l - 7 * m + 114) % 31) + 1;
 
-  return {
+  let dataUTC = new Date(ano, mes, dia);
+
+  let date = {
     dia,
     mes,
     ano,
+    dataUTC,
   };
+
+  return date;
 }

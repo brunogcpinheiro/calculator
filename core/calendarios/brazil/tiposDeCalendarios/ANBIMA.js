@@ -1,17 +1,11 @@
 import { getDate } from "date-fns";
 import feriados from "../feriados";
-import { obterDomingoDePascoa } from "../../../calendariosLunares/gregoriano";
+import obterDomingoDePascoa from "../../../calendariosLunares/gregoriano";
 
 export function obterListaDeFeriados(ano) {
-  const domingoDePascoa = obterDomingoDePascoa(ano);
+  let domingoDePascoa = obterDomingoDePascoa(ano).dataUTC;
 
-  let listaDeFeriados = [];
-
-  const lista = feriados(domingoDePascoa);
-
-  console.log(lista);
-
-  listaDeFeriados.push(lista);
+  const listaDeFeriados = feriados(domingoDePascoa);
 
   return listaDeFeriados;
 }
